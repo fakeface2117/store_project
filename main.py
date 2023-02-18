@@ -1,4 +1,5 @@
 def function_1(a, b):
+    s = 1 + 1
     return a + b
 
 
