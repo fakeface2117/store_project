@@ -9,7 +9,7 @@ a = []
 
 
 def new_function(a: int, b: int):
-    return a * b * 3
+    return a * b * 3 * 4
 
 
 if __name__ == '__main__':
