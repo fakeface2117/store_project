@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:13.3
+    env_file:
+      - env-file
+    volumes:
+#      - .admin_panel/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+#
+#  web-nft:
+#    build: ./fastapi-solution
+#    depends_on:
+#      - postgres
+#    env_file:
+#      - env-file
+##    ports:
+##      - "8000:8000"
+#    restart: on-failure
+#    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+#
+#  nginx:
+#    build: ./nginx
+#    ports:
+#      - 8000:80
+#      - 433:433
+#    volumes:
+#      - static:/opt/app/movies_admin/static
+#      - media:/opt/app/admin_panel/media
+#    depends_on:
+#      - web-nft
+#
+#  admin_panel:
+#    build:  ./admin_panel
+#    volumes:
+#      - media:/opt/app/admin_panel/media
+#      - static:/opt/app/admin_panel/static
+#    env_file:
+#      - env-file
+#    depends_on:
+#      - postgres
+#    ports:
+#      - 8001:8000
+#  redis-cache:
+#    image: redis:6.2-alpine
+#    container_name: redis
+#    restart: unless-stopped
+#    ports:
+#      - 6379:6379
+
+volumes:
+  pgdata:
+  static:
+  media:
